@@ -1,0 +1,853 @@
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}
+
+/* SEARCH BOX */
+#searchBox {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+/* SEARCH RESULTS WRAPPER */
+#resultsBox {
+  width: 75%;
+  margin: 20px auto;
+}
+
+/* SUCCESS and ERROR MESSAGES used across patients, appointments, auth and register */
+.success-box,
+.error-box {
+  width: 75%;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.success-box {
+  background: #d4edda;
+  color: #155724;
+  border-left: 5px solid #28a745;
+}
+
+.error-box {
+  background: #f8d7da;
+  color: #721c24;
+  border-left: 5px solid #dc3545;
+}
+
+/* ===================================
+   GLOBAL COLOUR PALETTE
+================================ */
+:root {
+  --navy: #2e5077;
+  --teal: #4da7a7;
+  --sky: #7bc6e8;
+  --peach: #f6a77f;
+  --light-bg: #eef3f8;
+  --white: #ffffff;
+  --text-dark: #24415b;
+}
+
+/* =========================================
+   GLOBAL STYLES
+================================== */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light-bg);
+  margin: 0;
+  padding: 0;
+  color: var(--text-dark);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--navy);
+  text-align: center;
+}
+
+/* =========================================
+   CONTAINER
+============================== */
+.container {
+  width: 80%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================
+   HERO SECTION
+========================================= */
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 70px 30px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.hero-flex {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.hero-left {
+  max-width: 50%;
+}
+
+.hero-left h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+}
+
+.hero-left p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+/* HERO BUTTONS */
+.hero-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  margin: 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-btn.primary {
+  background: var(--sky);
+  color: var(--navy);
+}
+
+.hero-btn.primary:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+}
+
+.hero-btn.secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.hero-btn.secondary:hover {
+  background: white;
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+/* HERO IMAGE */
+.hero-right img {
+  width: 300px;
+  height: auto;
+  filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.25));
+}
+
+/* Mobile responsive */
+@media (max-width: 800px) {
+  .hero-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-right img {
+    width: 220px;
+  }
+}
+
+/* ==================================
+   FEATURE CARDS (Home)
+========================================= */
+.features {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 20px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  background: var(--sky);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.feature-card h3 {
+  margin-top: 12px;
+  color: var(--navy);
+}
+
+.feature-card p {
+  color: var(--text-dark);
+}
+
+.icon {
+  font-size: 40px;
+  color: var(--teal);
+}
+
+/* =========================================
+   BUTTONS (general)
+========================================= */
+button,
+.top-button {
+  background: var(--sky);
+  color: var(--navy) !important;
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+button:hover,
+.top-button:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   FORMS
+================================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+  padding: 10px;
+  border: 1px solid var(--sky);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* ==================================
+   TABLES 
+========================================= */
+table {
+  margin: 20px auto;
+  width: 90%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px;
+  border-radius: 6px 6px 0 0;
+}
+
+table td {
+  background: white;
+  padding: 15px;
+  border: 1px solid #dce3eb;
+  border-radius: 4px;
+}
+
+table tr:hover td {
+  background: var(--sky);
+  color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ==============================
+   ABOUT PAGE
+========================================= */
+.about-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+
+.about-subtitle {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: var(--teal);
+  opacity: 0.9;
+}
+
+.about-intro {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 40px auto;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* Cards */
+.about-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.about-card {
+  background: var(--white);
+  width: 280px;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+  text-align: center;
+  border-top: 6px solid var(--sky);
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.18);
+  background: var(--sky);
+}
+
+.about-card:hover h3,
+.about-card:hover p {
+  color: var(--navy);
+}
+
+.about-icon {
+  font-size: 45px;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.about-card h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: var(--navy);
+}
+
+.about-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+/* Closing statement */
+.about-closing {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-dark);
+  opacity: 0.9;
+}
+
+/* =========================================
+   AUTH PAGE (Login & Register, Add Patient, Add Appointment)
+======================================= */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.auth-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 420px;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.4s ease;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-header h2 {
+  margin: 8px 0;
+  color: var(--navy);
+}
+
+.auth-header p {
+  font-size: 15px;
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+.auth-icon {
+  font-size: 45px;
+  color: var(--teal);
+}
+
+/* FORM */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-form label {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--navy);
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cfd9e3;
+  transition: 0.2s ease;
+  background: #f9fbfd;
+}
+
+.auth-form input:focus,
+.auth-form select:focus,
+.auth-form textarea:focus {
+  border-color: var(--teal);
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(77, 167, 167, 0.25);
+  outline: none;
+}
+
+/* BUTTON */
+.auth-btn {
+  background: var(--sky);
+  color: var(--navy);
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-top: 10px;
+}
+
+.auth-btn:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* LINK FOOTER */
+.auth-footer {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.auth-footer a {
+  color: var(--teal);
+  font-weight: bold;
+}
+
+.auth-footer a:hover {
+  color: var(--sky);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* ==================================
+   PATIENTS PAGE
+========================================= */
+.patients-header h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  color: var(--navy);
+}
+
+.patients-header h1 i {
+  color: var(--teal);
+  margin-right: 8px;
+}
+
+.patients-subtitle {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+/* Actions bar */
+.page-actions {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+/* Patients table */
+.patients-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.patients-table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.patients-table td {
+  background: white;
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #dce3eb;
+  border-radius: 6px;
+}
+
+/* Hover effect */
+.table-row {
+  transition: 0.3s ease;
+}
+
+.table-row:hover td {
+  background: var(--sky);
+  color: var(--navy);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   APPOINTMENTS PAGE
+================================== */
+.appointments-header h1 {
+  font-size: 32px;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+
+.appointments-header h1 i {
+  color: var(--teal);
+  margin-right: 8px;
+}
+
+.appointments-subtitle {
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+/* Appointments table */
+.appointments-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.appointments-table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.appointments-table td {
+  background: white;
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #dce3eb;
+  border-radius: 6px;
+}
+
+/* ============================
+   SEARCH PAGE
+====================================== */
+.search-header h1 {
+  font-size: 32px;
+  margin-bottom: 6px;
+  color: var(--navy);
+  text-align: center;
+}
+
+.search-header h1 i {
+  color: var(--teal);
+  margin-right: 8px;
+}
+
+.search-subtitle {
+  text-align: center;
+  color: var(--text-dark);
+  opacity: 0.8;
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+
+/* Search input */
+.search-box-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 70%;
+  max-width: 600px;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 1px solid var(--sky);
+  border-radius: 10px;
+  background: #f9fbfd;
+  transition: 0.25s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--teal);
+  background: white;
+  box-shadow: 0 0 10px rgba(77, 167, 167, 0.25);
+}
+
+/* Results layout */
+.results-wrapper {
+  margin-top: 25px;
+}
+
+.result-card {
+  background: var(--white);
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  transition: 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  background: var(--sky);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.result-card h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+}
+
+.no-results {
+  text-align: center;
+  padding: 20px;
+  background: #fff4f4;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  color: #a33;
+  font-weight: bold;
+}
+
+/* ===============================
+   ERROR PAGES (404 and 500)
+=================================== */
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+.error-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.4s ease;
+}
+
+.error-icon {
+  font-size: 60px;
+  color: var(--sky);
+  margin-bottom: 18px;
+}
+
+.error-card h1 {
+  font-size: 32px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: var(--text-dark);
+  font-size: 17px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Error button */
+.error-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--sky);
+  color: var(--navy);
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.error-btn:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   NAVBAR 
+================================== */
+.navbar {
+  background: var(--navy);
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--teal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-brand i {
+  color: var(--sky);
+  font-size: 22px;
+}
+
+.navbar-right a {
+  color: white;
+  margin-left: 22px;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: 0.25s ease;
+}
+
+.navbar-right a:hover {
+  color: var(--sky);
+}
+
+/* underline animation */
+.navbar-right a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--sky);
+  left: 0;
+  bottom: 0;
+  transition: 0.3s ease;
+}
+
+.navbar-right a:hover::after {
+  width: 100%;
+}
+
+/* Logout accent colour */
+.logout {
+  color: var(--peach) !important;
+}
+
+.logout:hover {
+  color: var(--sky) !important;
+}
+
+/* ==========================
+   FOOTER
+================================ */
+.footer {
+  background: var(--white);
+  padding: 18px 0;
+  margin-top: 50px;
+  border-top: 1px solid #dce3eb;
+  text-align: center;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.footer-content p {
+  margin: 0;
+  color: var(--text-dark);
+  opacity: 0.75;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+}
+
+.footer-content p span {
+  color: var(--teal);
+}

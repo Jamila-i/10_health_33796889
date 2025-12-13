@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patients - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container patients-container">
+      <!-- Page Title -->
+      <div class="patients-header">
+        <h1><i class="fa-solid fa-user-group"></i> Patient Records</h1>
+        <p class="patients-subtitle">
+          View and manage all registered patients in your clinic.
+        </p>
+      </div>
+
+      <!-- Success/Error Messages -->
+      <% if (success && success.length > 0) { %>
+      <div class="success-box">
+        <% success.forEach(s => { %>
+        <p><%= s %></p>
+        <% }) %>
+      </div>
+      <% } %> <% if (error && error.length > 0) { %>
+      <div class="error-box">
+        <% error.forEach(e => { %>
+        <p><%= e %></p>
+        <% }) %>
+      </div>
+      <% } %>
+
+      <!-- Add Patient button -->
+      <div class="page-actions">
+        <a href="/patients/add" class="top-button">
+          <i class="fa-solid fa-user-plus"></i> Add Patient
+        </a>
+      </div>
+
+      <!-- Patients table -->
+      <table class="patients-table">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Date of Birth</th>
+          <th>Registered</th>
+        </tr>
+
+        <% patients.forEach(p => { %>
+        <tr class="table-row">
+          <td><%= p.name %></td>
+          <td><%= p.email %></td>
+          <td><%= p.phone || '-' %></td>
+          <td><%= p.dob %></td>
+          <td><%= p.created_at.toISOString().slice(0,10) %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

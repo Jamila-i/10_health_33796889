@@ -1,0 +1,11 @@
+home=http://www.doc.gold.ac.uk/usr/111/
+about=http://www.doc.gold.ac.uk/usr/111/about
+login=http://www.doc.gold.ac.uk/usr/111/login
+register=http://www.doc.gold.ac.uk/usr/111/register
+patients=http://www.doc.gold.ac.uk/usr/111/patients
+add_patients=http://www.doc.gold.ac.uk/usr/111/patients/add
+appointments=http://www.doc.gold.ac.uk/usr/111/appointments
+add_appointments=http://www.doc.gold.ac.uk/usr/111/appointments/add
+search=http://www.doc.gold.ac.uk/usr/111/search
+error_400=http://www.doc.gold.ac.uk/usr/111/400
+error_500=http://www.doc.gold.ac.uk/usr/111/500

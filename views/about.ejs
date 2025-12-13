@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container about-container">
+      <!-- Title and subtitle -->
+      <h1 class="about-title">About ClinicConnect</h1>
+      <p class="about-subtitle">
+        A modern, streamlined clinical management platform designed to simplify
+        patient care operations.
+      </p>
+
+      <!-- intro -->
+      <div class="about-intro">
+        <p>
+          ClinicConnect helps healthcare teams deliver efficient, organised, and
+          patient-focused care. By combining intuitive design with secure
+          technology, ClinicConnect reduces administrative workload, improves
+          appointment coordination, and ensures vital information is always a
+          click away.
+        </p>
+      </div>
+
+      <!-- all grids -->
+      <div class="about-grid">
+        <!-- card 1 -->
+        <div class="about-card">
+          <i class="fa-solid fa-hospital-user about-icon"></i>
+          <h3>Designed for Healthcare Teams</h3>
+          <p>
+            Built to support reception teams, clinicians, assistants, and
+            administrators, ClinicConnect makes managing daily clinic tasks
+            effortless. Whether registering new patients or organising visits,
+            everything is designed to be clear, fast, and dependable.
+          </p>
+        </div>
+
+        <!-- card 2 -->
+        <div class="about-card">
+          <i class="fa-solid fa-shield-heart about-icon"></i>
+          <h3>Secure & Reliable</h3>
+          <p>
+            With secure authentication, structured data handling, and clear
+            workflows, ClinicConnect ensures patient information is protected
+            while staying easily accessible for authorised staff.
+          </p>
+        </div>
+
+        <!-- card 3 -->
+        <div class="about-card">
+          <i class="fa-solid fa-calendar-check about-icon"></i>
+          <h3>Smart Appointment Workflow</h3>
+          <p>
+            From first-time bookings to follow-up visits, ClinicConnect offers a
+            simple, organised system to manage appointments with clarity and
+            confidence.
+          </p>
+        </div>
+      </div>
+
+      <!-- final message -->
+      <div class="about-closing">
+        <p>
+          ClinicConnect focuses on what matters most: giving clinics the tools
+          they need to operate smoothly, freeing up more time for meaningful
+          patient care.
+        </p>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

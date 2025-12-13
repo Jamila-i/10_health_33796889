@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-heart-pulse"></i> ClinicConnect
+    </a>
+  </div>
+
+  <div class="navbar-right">
+    <a href="/">Home</a>
+
+    <% if (user) { %>
+    <a href="/patients">Patients</a>
+    <a href="/appointments">Appointments</a>
+    <a href="/search">Search</a>
+    <% } %>
+
+    <a href="/about">About</a>
+
+    <% if (user) { %>
+    <a href="/logout" class="logout">Logout</a>
+    <% } else { %>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <% } %>
+  </div>
+</nav>

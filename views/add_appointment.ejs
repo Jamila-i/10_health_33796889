@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Appointment - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <!-- Header with icon -->
+        <div class="auth-header">
+          <i class="fa-solid fa-calendar-plus auth-icon"></i>
+          <h2>Schedule Appointment</h2>
+          <p>Fill in the details to create a new appointment</p>
+        </div>
+
+        <!-- error box -->
+        <% if (error && error.length > 0) { %>
+        <div class="error-box">
+          <strong>Please correct the following:</strong>
+          <ul>
+            <% error.forEach(e => { %>
+            <li><%= e %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+
+        <!-- form -->
+        <form action="/appointments/add" method="POST" class="auth-form">
+          <label>Select Patient</label>
+          <select name="patient_id" required>
+            <option value="">-- choose a patient --</option>
+            <% patients.forEach(p => { %>
+            <option value="<%= p.patient_id %>"><%= p.name %></option>
+            <% }) %>
+          </select>
+
+          <label>Appointment Date</label>
+          <input type="date" name="date" required />
+
+          <label>Appointment Time</label>
+          <input type="time" name="time" required />
+
+          <label>Visit Type</label>
+          <select name="type" required>
+            <option value="">-- choose appointment type --</option>
+            <option value="checkup">Checkup</option>
+            <option value="consultation">Consultation</option>
+            <option value="vaccination">Vaccination</option>
+            <option value="follow-up">Follow-up</option>
+          </select>
+
+          <label>Additional Notes (optional)</label>
+          <textarea name="notes" rows="3"></textarea>
+
+          <button type="submit" class="auth-btn">Add Appointment</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

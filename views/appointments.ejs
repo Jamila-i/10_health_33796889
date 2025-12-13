@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Appointments - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container appointments-container">
+      <!-- Header -->
+      <div class="appointments-header">
+        <h1><i class="fa-solid fa-calendar-check"></i> Appointment Schedule</h1>
+        <p class="appointments-subtitle">
+          View and manage all upcoming and past appointments.
+        </p>
+      </div>
+
+      <!-- sucess/Error -->
+      <% if (success && success.length > 0) { %>
+      <div class="success-box">
+        <% success.forEach(s => { %>
+        <p><%= s %></p>
+        <% }) %>
+      </div>
+      <% } %> <% if (error && error.length > 0) { %>
+      <div class="error-box">
+        <% error.forEach(e => { %>
+        <p><%= e %></p>
+        <% }) %>
+      </div>
+      <% } %>
+
+      <!-- Add button -->
+      <div class="page-actions">
+        <a href="/appointments/add" class="top-button">
+          <i class="fa-solid fa-calendar-plus"></i> Add Appointment
+        </a>
+      </div>
+
+      <!-- Appointments table -->
+      <table class="appointments-table">
+        <tr>
+          <th>Patient</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+
+        <% appointments.forEach(a => { %>
+        <tr class="table-row">
+          <td><%= a.patient_name %></td>
+          <td><%= a.appointment_date %></td>
+          <td><%= a.appointment_time %></td>
+          <td><%= a.appointment_type %></td>
+          <td><%= a.notes || "-" %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

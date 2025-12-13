@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="container search-container">
+      <!-- Header -->
+      <div class="search-header">
+        <h1><i class="fa-solid fa-magnifying-glass"></i> Search Records</h1>
+        <p class="search-subtitle">
+          Find appointments instantly using our live search tool.
+        </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-box-wrapper">
+        <input
+          type="text"
+          id="searchBox"
+          class="search-input"
+          placeholder="Search by patient name or appointment type..."
+        />
+      </div>
+
+      <!-- Results -->
+      <div id="resultsBox" class="results-wrapper"></div>
+    </div>
+
+    <script>
+      const searchBox = document.getElementById("searchBox");
+      const resultsBox = document.getElementById("resultsBox");
+
+      searchBox.addEventListener("input", async function () {
+        let text = this.value.trim();
+
+        if (text.length === 0) {
+          resultsBox.innerHTML = "";
+          return;
+        }
+
+        const response = await fetch(
+          `/api/search?query=${encodeURIComponent(text)}`
+        );
+        const data = await response.json();
+
+        resultsBox.innerHTML = "";
+
+        if (data.length === 0) {
+          resultsBox.innerHTML = `<div class="no-results">No matching records found.</div>`;
+          return;
+        }
+
+        data.forEach((item) => {
+          const div = document.createElement("div");
+          div.classList.add("result-card");
+
+          div.innerHTML = `
+              <h3>${item.patient_name}</h3>
+              <p><strong>Type:</strong> ${item.appointment_type}</p>
+              <p><strong>Date:</strong> ${item.appointment_date}</p>
+              <p><strong>Time:</strong> ${item.appointment_time}</p>
+          `;
+
+          resultsBox.appendChild(div);
+        });
+      });
+    </script>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

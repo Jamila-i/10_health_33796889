@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <!-- Icon and style -->
+        <div class="auth-header">
+          <i class="fa-solid fa-user-shield auth-icon"></i>
+          <h2>Welcome Back</h2>
+          <p>Secure login to your ClinicConnect account</p>
+        </div>
+
+        <!-- Error box -->
+        <% if (error && error.length > 0) { %>
+        <div class="error-box">
+          <% error.forEach(e => { %>
+          <p><%= e %></p>
+          <% }) %>
+        </div>
+        <% } %>
+
+        <!-- Login Form -->
+        <form action="/login" method="POST" class="auth-form">
+          <label>Username</label>
+          <input type="text" name="username" required />
+
+          <label>Password</label>
+          <input type="password" name="password" required />
+
+          <button type="submit" class="auth-btn">Login</button>
+        </form>
+
+        <!-- Register link -->
+        <p class="auth-footer">
+          Don't have an account?
+          <a href="./register">Register here</a>
+        </p>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

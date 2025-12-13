@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register - ClinicConnect</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <!-- Icon and title -->
+        <div class="auth-header">
+          <i class="fa-solid fa-user-plus auth-icon"></i>
+          <h2>Create Your Account</h2>
+          <p>Register to access ClinicConnect management tools</p>
+        </div>
+
+        <!-- Error messages -->
+        <% if (error && error.length > 0) { %>
+        <div class="error-box">
+          <strong>Please fix the following:</strong>
+          <ul>
+            <% error.forEach(e => { %>
+            <li><%= e %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+
+        <!-- Sucess message -->
+        <% if (success && success.length > 0) { %>
+        <div class="success-box">
+          <% success.forEach(s => { %>
+          <p><%= s %></p>
+          <% }) %>
+        </div>
+        <% } %>
+
+        <!-- Form -->
+        <form action="/register" method="POST" class="auth-form">
+          <label>Username</label>
+          <input type="text" name="username" required />
+
+          <label>First Name</label>
+          <input type="text" name="first_name" required />
+
+          <label>Last Name</label>
+          <input type="text" name="last_name" required />
+
+          <label>Email</label>
+          <input type="email" name="email" required />
+
+          <label>Password</label>
+          <input type="password" name="password" required />
+
+          <label>Confirm Password</label>
+          <input type="password" name="confirm" required />
+
+          <button type="submit" class="auth-btn">Create Account</button>
+        </form>
+
+        <!-- login link -->
+        <p class="auth-footer">
+          Already have an account?
+          <a href="./login">Login here</a>
+        </p>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

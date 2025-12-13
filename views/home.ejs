@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ClinicConnect - Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <!-- blue hero Section  -->
+    <section class="hero">
+      <div class="hero-flex">
+        <!-- Left side (text and buttons)-->
+        <div class="hero-left">
+          <h1>Clinic Management Made Simple</h1>
+          <p>
+            Manage patients, appointments, and search records instantly with
+            ClinicConnect.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="/register" class="hero-btn primary">Get Started</a>
+
+            <% if (!user) { %>
+            <a href="/login" class="hero-btn secondary">Login</a>
+            <% } else { %>
+            <a href="/patients" class="hero-btn secondary">Dashboard</a>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- ride side (hero image) -->
+        <div class="hero-right">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3063/3063176.png"
+            alt="Clinic Image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features card sections -->
+    <section class="features">
+      <h2>What You Can Do</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-user-plus icon"></i>
+          <h3>Add Patients</h3>
+          <p>Register new patients and manage their information easily.</p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-calendar-plus icon"></i>
+          <h3>Book Appointments</h3>
+          <p>Organise and schedule patient visits with a simple form.</p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-search icon"></i>
+          <h3>AJAX Live Search</h3>
+          <p>Quickly find patient or appointment records in real-time.</p>
+        </div>
+      </div>
+    </section>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>
